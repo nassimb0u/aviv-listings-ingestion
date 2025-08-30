@@ -1,0 +1,42 @@
+spark:
+  app_name: AvivListingIngest
+  master: local[*]
+  logging_level: INFO
+
+input:
+  listings_path: ../listings/listings.jsonl
+  format: json        # allowed: json | csv
+   # JSON specific
+  json:
+    multiline: false
+  # CSV specific
+  csv:
+    header: true
+    delimiter: ","
+    quote: '"'
+    escape: '"'
+    multiLine: true
+    nullValue: ""
+    timestampFormat: "yyyy-MM-dd HH:mm:ss"
+    encoding: UTF-8
+
+db:
+  listing_table: listing
+  listing_pk: ["listing_id"]
+  item_category_table: item_category
+  item_category_pk: ["subcategory"]
+
+transform:
+  date_as_unixtime: true
+  normalize_enum: true
+  enforce_non_negative: true
+  drop_invalid_zipcode: true
+  normalize_two_digits_zc: true
+  zipcode_regex: ^\d+$
+  adjust_build_year_policy: adjust
+  adjust_change_date_policy: adjust
+  deduplicate: true
+
+run:
+  repartition_item_category: 1
+  repartition_listing: 1

@@ -1,0 +1,6 @@
+dotenv==0.9.9
+psycopg2==2.9.10
+py4j==0.10.9.9
+pyspark==4.0.0
+python-dotenv==1.1.1
+PyYAML==6.0.2

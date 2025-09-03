@@ -98,6 +98,17 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 6) Open the docs in your browser (see OpenAPI / Docs above).
 
+## API tests
+
+To test the API run:
+
+```console
+$ bash ./scripts/test.sh
+```
+
+This will run the test suite with `pytest` and generate a code coverage report.
+
+
 ## Notes
 - The project builds the SQLALCHEMY_DATABASE_URI from `.env` using the `psycopg` driver. Ensure your Postgres is reachable with the credentials provided.
 

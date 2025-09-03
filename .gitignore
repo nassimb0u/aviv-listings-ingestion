@@ -221,3 +221,6 @@ __marimo__/
 
 # ds_store
 *.DS_Store
+
+# .vscode/
+.vscode/
